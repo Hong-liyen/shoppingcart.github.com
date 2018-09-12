@@ -41,7 +41,9 @@ export default {
       msg: "MyBuylist 購物清單",
       name: "",
       price: "",
-      quantity: 0,
+      name: "",
+      price: "",
+      quantity: "",
       items: [
         {
           name: "男士背包",
@@ -73,18 +75,14 @@ export default {
   },
   methods: {
     addBtn: function() {
-      var name = this.name;
-      var reg = /^[0-9]*$/;
-      if (!reg.test(name) || name == 0) {
-        alert("請輸入產品名稱");
-        return false;
-      }
-      if (this.items.length > 0) {
+      if (this.name.length && this.price.length && this.quantity.length  > 0) {
         this.items.push({
-          name: this.name,
-          price: this.price,
-          count: this.quantity
+            name: this.name,
+            price: this.price,
+            count: this.quantity
         });
+      } else{
+        alert("輸入框不可為空白");
       }
     },
     remove(index) {
